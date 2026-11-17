@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MedPrep | Doctor Visit Preparation</title>
+
+    <!-- Bootstrap 5.3.9 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+        crossorigin="anonymous"
+    >
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Custom CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar navbar-expand-lg main-navbar">
+        <div class="container">
+
+            <a class="navbar-brand brand" href="/">
+                <span class="brand-mark">M</span>
+                <span>MedPrep</span>
+            </a>
+
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <span class="privacy-label">
+                    <span class="status-dot"></span>
+                    Patient-focused
+                </span>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <main>
+
+        <section class="hero-section">
+            <div class="container">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg-8">
+
+                        <div class="eyebrow">
+                            DOCTOR VISIT PREPARATION
+                        </div>
+
+                        <h1>
+                            Make every doctor visit
+                            <span>more organized.</span>
+                        </h1>
+
+                        <p class="hero-description">
+                            Explain your health concerns, organize your
+                            medical information, and prepare a clear
+                            summary to discuss with your doctor.
+                        </p>
+
+                        <div class="hero-points">
+
+                            <span>
+                                <span class="point-check">✓</span>
+                                Simple information form
+                            </span>
+
+                            <span>
+                                <span class="point-check">✓</span>
+                                AI-organized summary
+                            </span>
+
+                            <span>
+                                <span class="point-check">✓</span>
+                                Downloadable PDF
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4 d-none d-lg-block">
+
+                        <div class="hero-side-card">
+
+                            <div class="side-card-top">
+                                <span class="small-label">
+                                    YOUR APPOINTMENT PREPARATION
+                                </span>
+
+                                <span class="side-card-icon">+</span>
+                            </div>
+
+                            <div class="side-card-number">01</div>
+
+                            <h5>Describe your concern</h5>
+
+                            <p>
+                                Start with what's bothering you.
+                                Add other relevant information when needed.
+                            </p>
+
+                            <div class="side-card-footer">
+                                <span class="status-dot"></span>
+                                Built around your information
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- FORM SECTION -->
+
+        <section class="form-section">
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <div class="eyebrow">YOUR INFORMATION</div>
+
+                        <h2>Prepare your visit summary</h2>
+
+                        <p>
+                            Start with the main concern. Additional details
+                            are optional.
+                        </p>
+                    </div>
+
+                    <div class="form-step">
+                        <span class="step-number">01</span>
+                        <span>Patient details</span>
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+                    <!-- LEFT FORM -->
+
+                    <div class="col-lg-8">
+
+                        <div class="form-panel">
+
+                            <form id="medprepForm">
+
+                                <!-- MAIN CONCERN -->
+
+                                <div class="form-block">
+
+                                    <div class="block-heading">
+
+                                        <div class="block-icon">01</div>
+
+                                        <div>
+                                            <h4>Main health concern</h4>
+                                            <p>
+                                                Tell us what you are experiencing.
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+                                    <label
+                                        for="mainConcern"
+                                        class="form-label"
+                                    >
+                                        What is your main health concern?
+                                        <span class="required">*</span>
+                                    </label>
+
+                                    <textarea
+                                        class="form-control main-textarea"
+                                        id="mainConcern"
+                                        name="main_problem"
+                                        rows="4"
+                                        maxlength="5000"
+                                        placeholder="Example: I have been experiencing headaches for the past three days."
+                                        required
+                                    ></textarea>
+
+                                    <div class="field-footer">
+                                        <span>
+                                            Describe it in English or Roman Urdu.
+                                        </span>
+
+                                        <span id="characterCount">0 / 5000</span>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-divider"></div>
+
+
+                                <!-- DURATION -->
+
+                                <div class="form-block">
+
+                                    <div class="block-heading">
+
+                                        <div class="block-icon">02</div>
+
+                                        <div>
+                                            <h4>Duration and symptoms</h4>
+                                            <p>
+                                                Select the details that apply.
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="mb-4">
+
+                                        <label
+                                            for="duration"
+                                            class="form-label"
+                                        >
+                                            How long have you experienced it?
+                                        </label>
+
+                                        <select
+                                            class="form-select"
+                                            id="duration"
+                                            name="duration"
+                                        >
+                                            <option value="">Select duration</option>
+                                            <option value="Today">Today</option>
+                                            <option value="1–3 days">1–3 days</option>
+                                            <option value="4–7 days">4–7 days</option>
+                                            <option value="1–4 weeks">1–4 weeks</option>
+                                            <option value="More than a month">
+                                                More than a month
+                                            </option>
+                                        </select>
+
+                                    </div>
+
+
+                                    <label class="form-label">
+                                        Which symptoms are you experiencing?
+                                    </label>
+
+                                    <div class="symptom-grid">
+
+                                        <label class="symptom-option">
+                                            <input type="checkbox" name="symptoms" value="Pain">
+                                            <span>Pain</span>
+                                        </label>
+
+                                        <label class="symptom-option">
+                                            <input type="checkbox" name="symptoms" value="Fever">
+                                            <span>Fever</span>
+                                        </label>
+
+                                        <label class="symptom-option">
+                                            <input type="checkbox" name="symptoms" value="Fatigue">
+                                            <span>Fatigue</span>
+                                        </label>
+
+                                        <label class="symptom-option">
+                                            <input type="checkbox" name="symptoms" value="Dizziness">
+                                            <span>Dizziness</span>
+                                        </label>
+
+                                        <label class="symptom-option">
+                                            <input type="checkbox" name="symptoms" value="Nausea">
+                                            <span>Nausea</span>
+                                        </label>
+
+                                        <label class="symptom-option">
+                                            <input type="checkbox" name="symptoms" value="Cough">
+                                            <span>Cough</span>
+                                        </label>
+
+                                        <label class="symptom-option">
+                                            <input type="checkbox" name="symptoms" value="Breathing difficulty">
+                                            <span>Breathing difficulty</span>
+                                        </label>
+
+                                        <label class="symptom-option">
+                                            <input type="checkbox" name="symptoms" value="Chest pain">
+                                            <span>Chest pain</span>
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-divider"></div>
+
+
+                                <!-- OPTIONAL DETAILS -->
+
+                                <div class="form-block">
+
+                                    <div class="block-heading">
+
+                                        <div class="block-icon optional-icon">
+                                            +
+                                        </div>
+
+                                        <div>
+                                            <h4>Additional details</h4>
+
+                                            <p>
+                                                Optional information that can
+                                                help provide more context.
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="accordion custom-accordion" id="detailsAccordion">
+
+                                        <div class="accordion-item">
+
+                                            <h2 class="accordion-header">
+
+                                                <button
+                                                    class="accordion-button collapsed"
+                                                    type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#optionalDetails"
+                                                    aria-expanded="false"
+                                                    aria-controls="optionalDetails"
+                                                >
+                                                    Add patient and medical details
+                                                </button>
+
+                                            </h2>
+
+                                            <div
+                                                id="optionalDetails"
+                                                class="accordion-collapse collapse"
+                                                data-bs-parent="#detailsAccordion"
+                                            >
+
+                                                <div class="accordion-body">
+
+                                                    <h6 class="subsection-title">
+                                                        Patient information
+                                                    </h6>
+
+                                                    <div class="row g-3">
+
+                                                        <div class="col-md-6">
+
+                                                            <label
+                                                                for="patientName"
+                                                                class="form-label"
+                                                            >
+                                                                Patient name
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="patientName"
+                                                                placeholder="Enter patient name"
+                                                            >
+
+                                                        </div>
+
+                                                        <div class="col-md-3">
+
+                                                            <label
+                                                                for="age"
+                                                                class="form-label"
+                                                            >
+                                                                Age
+                                                            </label>
+
+                                                            <input
+                                                                type="number"
+                                                                class="form-control"
+                                                                id="age"
+                                                                min="1"
+                                                                max="120"
+                                                                placeholder="Age"
+                                                            >
+
+                                                        </div>
+
+                                                        <div class="col-md-3">
+
+                                                            <label
+                                                                for="gender"
+                                                                class="form-label"
+                                                            >
+                                                                Gender
+                                                            </label>
+
+                                                            <select
+                                                                class="form-select"
+                                                                id="gender"
+                                                            >
+                                                                <option value="">Select</option>
+                                                                <option>Male</option>
+                                                                <option>Female</option>
+                                                                <option>Other</option>
+                                                            </select>
+
+                                                        </div>
+
+                                                        <div class="col-12">
+
+                                                            <label
+                                                                for="bodyPart"
+                                                                class="form-label"
+                                                            >
+                                                                Affected body part
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="bodyPart"
+                                                                placeholder="Example: Head, stomach, back..."
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div class="optional-divider"></div>
+
+
+                                                    <h6 class="subsection-title">
+                                                        Symptom details
+                                                    </h6>
+
+                                                    <div class="row g-3">
+
+                                                        <div class="col-md-6">
+
+                                                            <label
+                                                                for="frequency"
+                                                                class="form-label"
+                                                            >
+                                                                How frequently do symptoms occur?
+                                                            </label>
+
+                                                            <select
+                                                                class="form-select"
+                                                                id="frequency"
+                                                            >
+                                                                <option value="">Select frequency</option>
+                                                                <option>Constantly</option>
+                                                                <option>Several times a day</option>
+                                                                <option>Daily</option>
+                                                                <option>Occasionally</option>
+                                                            </select>
+
+                                                        </div>
+
+                                                        <div class="col-md-6">
+
+                                                            <label
+                                                                for="severity"
+                                                                class="form-label"
+                                                            >
+                                                                Symptom severity
+                                                            </label>
+
+                                                            <select
+                                                                class="form-select"
+                                                                id="severity"
+                                                            >
+                                                                <option value="">Select severity</option>
+
+                                                                {% for number in range(1, 11) %}
+                                                                <option value="{{ number }}">
+                                                                    {{ number }} / 10
+                                                                </option>
+                                                                {% endfor %}
+
+                                                            </select>
+
+                                                        </div>
+
+                                                        <div class="col-12">
+
+                                                            <label
+                                                                for="otherSymptoms"
+                                                                class="form-label"
+                                                            >
+                                                                Other symptoms
+                                                            </label>
+
+                                                            <textarea
+                                                                class="form-control"
+                                                                id="otherSymptoms"
+                                                                rows="2"
+                                                                placeholder="Describe any other symptoms..."
+                                                            ></textarea>
+
+                                                        </div>
+
+                                                        <div class="col-12">
+
+                                                            <label
+                                                                for="dailyImpact"
+                                                                class="form-label"
+                                                            >
+                                                                Effect on daily life
+                                                            </label>
+
+                                                            <textarea
+                                                                class="form-control"
+                                                                id="dailyImpact"
+                                                                rows="2"
+                                                                placeholder="Example: Difficulty concentrating on studies or work..."
+                                                            ></textarea>
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div class="optional-divider"></div>
+
+
+                                                    <h6 class="subsection-title">
+                                                        Medical history
+                                                    </h6>
+
+                                                    <div class="row g-3">
+
+                                                        <div class="col-12">
+
+                                                            <label
+                                                                for="medicalHistory"
+                                                                class="form-label"
+                                                            >
+                                                                Existing medical conditions
+                                                            </label>
+
+                                                            <textarea
+                                                                class="form-control"
+                                                                id="medicalHistory"
+                                                                rows="2"
+                                                                placeholder="Mention any diagnosed conditions..."
+                                                            ></textarea>
+
+                                                        </div>
+
+                                                        <div class="col-12">
+
+                                                            <label
+                                                                for="medications"
+                                                                class="form-label"
+                                                            >
+                                                                Current medications
+                                                            </label>
+
+                                                            <textarea
+                                                                class="form-control"
+                                                                id="medications"
+                                                                rows="2"
+                                                                placeholder="Mention medicines you currently take..."
+                                                            ></textarea>
+
+                                                        </div>
+
+                                                        <div class="col-12">
+
+                                                            <label
+                                                                for="allergies"
+                                                                class="form-label"
+                                                            >
+                                                                Known allergies
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="allergies"
+                                                                placeholder="Mention any known allergies..."
+                                                            >
+
+                                                        </div>
+
+                                                        <div class="col-12">
+
+                                                            <label
+                                                                for="previousTreatment"
+                                                                class="form-label"
+                                                            >
+                                                                Previous treatment or medical tests
+                                                            </label>
+
+                                                            <textarea
+                                                                class="form-control"
+                                                                id="previousTreatment"
+                                                                rows="2"
+                                                                placeholder="Describe any previous treatment or tests..."
+                                                            ></textarea>
+
+                                                        </div>
+
+                                                        <div class="col-12">
+
+                                                            <label
+                                                                for="additionalInfo"
+                                                                class="form-label"
+                                                            >
+                                                                Additional information
+                                                            </label>
+
+                                                            <textarea
+                                                                class="form-control"
+                                                                id="additionalInfo"
+                                                                rows="3"
+                                                                placeholder="Anything else you want your doctor to know..."
+                                                            ></textarea>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-divider"></div>
+
+
+                                <!-- LANGUAGE -->
+
+                                <div class="form-block">
+
+                                    <div class="block-heading">
+
+                                        <div class="block-icon">03</div>
+
+                                        <div>
+                                            <h4>Summary language</h4>
+
+                                            <p>
+                                                Choose how you want your
+                                                final summary written.
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <select
+                                        class="form-select language-select"
+                                        id="summaryLanguage"
+                                    >
+                                        <option value="auto">
+                                            Same as my input (Auto Detect)
+                                        </option>
+
+                                        <option value="english">
+                                            English
+                                        </option>
+
+                                        <option value="roman_urdu">
+                                            Roman Urdu
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- SUBMIT -->
+
+                                <div class="submit-area">
+
+                                    <button
+                                        type="submit"
+                                        class="btn generate-btn"
+                                        id="generateBtn"
+                                    >
+                                        <span>Generate Doctor Visit Summary</span>
+                                        <span class="button-arrow">→</span>
+                                    </button>
+
+                                    <p class="submit-note">
+                                        Review the information before generating.
+                                    </p>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RIGHT INFO PANEL -->
+
+                    <div class="col-lg-4">
+
+                        <aside class="info-panel">
+
+                            <div class="info-panel-label">
+                                HOW MEDPREP WORKS
+                            </div>
+
+                            <h4>
+                                Better prepared.
+                                <br>
+                                Better communicated.
+                            </h4>
+
+                            <p>
+                                MedPrep helps organize the information
+                                you provide into a readable visit summary.
+                            </p>
+
+                            <div class="process-list">
+
+                                <div class="process-item">
+
+                                    <span class="process-number">01</span>
+
+                                    <div>
+                                        <h6>Share your concern</h6>
+                                        <p>
+                                            Describe the problem in
+                                            your own words.
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <div class="process-item">
+
+                                    <span class="process-number">02</span>
+
+                                    <div>
+                                        <h6>AI organizes details</h6>
+                                        <p>
+                                            Your provided information
+                                            is structured into a summary.
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <div class="process-item">
+
+                                    <span class="process-number">03</span>
+
+                                    <div>
+                                        <h6>Download your report</h6>
+                                        <p>
+                                            Take the summary to discuss
+                                            with your healthcare professional.
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="privacy-box">
+                                <strong>Important</strong>
+
+                                <p>
+                                    MedPrep is not a diagnostic tool.
+                                    It does not prescribe medicines or
+                                    replace professional medical care.
+                                </p>
+                            </div>
+
+                        </aside>
+
+
+                        <div class="help-card">
+
+                            <div class="help-card-mark">i</div>
+
+                            <div>
+                                <h6>Write naturally</h6>
+
+                                <p>
+                                    You can explain your concern in
+                                    English or Roman Urdu.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RESULT SECTION -->
+
+<section id="resultSection" class="result-section d-none">
+
+    <div class="result-heading">
+
+        <div>
+            <div class="eyebrow">GENERATED DOCUMENT</div>
+            <h2>Your doctor visit report</h2>
+            <p>
+                Review your health summary and questions before
+                discussing them with your doctor.
+            </p>
+        </div>
+
+        <span class="ready-status">
+            <span class="status-dot"></span>
+            Report ready
+        </span>
+
+    </div>
+
+
+    <!-- SAFETY NOTICE -->
+
+    <div id="safetyNotice" class="safety-panel">
+
+        <div class="safety-icon">!</div>
+
+        <div>
+            <h5 id="safetyTitle"></h5>
+            <p id="safetyMessage"></p>
+        </div>
+
+    </div>
+
+
+    <!-- VISIT SUMMARY -->
+
+    <div class="summary-container">
+
+        <div class="summary-topbar">
+            <span>MEDPREP / VISIT SUMMARY</span>
+            <span id="summaryDate"></span>
+        </div>
+
+        <div id="summaryContent" class="summary-content"></div>
+
+    </div>
+
+
+    <!-- DOCTOR QUESTIONS -->
+
+    <div class="questions-card">
+
+        <div class="questions-header">
+            <div>
+                <div class="eyebrow">APPOINTMENT PREPARATION</div>
+                <h3>Questions to discuss with your doctor</h3>
+                <p>
+                    These questions are based on the information
+                    you entered.
+                </p>
+            </div>
+
+            <div class="questions-count" id="questionsCount">0</div>
+        </div>
+
+        <ol id="doctorQuestions" class="questions-list"></ol>
+
+        <div class="questions-note">
+            These are discussion prompts, not medical advice
+            or suggested diagnoses.
+        </div>
+
+    </div>
+
+
+    <!-- DOWNLOAD -->
+
+    <div class="download-area">
+
+        <button
+            id="downloadBtn"
+            class="btn download-btn"
+            type="button"
+        >
+            Download Complete PDF
+            <span>↓</span>
+        </button>
+
+        <button
+            id="editBtn"
+            class="btn edit-btn"
+            type="button"
+        >
+            Edit information
+        </button>
+
+    </div>
+
+</section>
+                <!-- LOADING -->
+
+                <div id="loadingOverlay" class="loading-overlay d-none">
+
+                    <div class="loading-card">
+
+                        <div class="loader-spinner"></div>
+
+                        <h5>Preparing your summary</h5>
+
+                        <p>
+                            Organizing your information into
+                            a structured document.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="messageBox"
+                    class="alert d-none mt-3"
+                    role="alert"
+                ></div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="main-footer">
+
+        <div class="container">
+
+            <div class="footer-inner">
+
+                <div class="brand footer-brand">
+                    <span class="brand-mark">M</span>
+                    <span>MedPrep</span>
+                </div>
+
+                <p>
+                    Organizing information for better doctor conversations.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+        crossorigin="anonymous"
+    ></script>
+
+
+    <!-- Custom JS -->
+
+    <script
+        src="{{ url_for('static', filename='js/app.js') }}"
+    ></script>
+
+</body>
+</html>
